@@ -58,7 +58,13 @@ TARGET_SCREEN_WIDTH := 1920
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += "bootopt=64S3,32N2,64N2"
+BOARD_KERNEL_CMDLINE += "androidboot.selinux=permissive"
+BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.avb_version=1.1"
+BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.device_state=unlocked"
+BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.invalidate_on_error=no"
+BOARD_KERNEL_CMDLINE += "androidboot.veritymode=ignore_corruption"
+BOARD_KERNEL_CMDLINE += "androidboot.dtbo_idx=0"
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x14f88000
 BOARD_KERNEL_TAGS_OFFSET := 0x13f88000
