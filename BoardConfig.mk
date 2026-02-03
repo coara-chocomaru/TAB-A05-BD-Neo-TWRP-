@@ -13,7 +13,7 @@ BOARD_USES_NFC := false
 TARGET_USES_NFC := false
 TARGET_BUILD_64BIT := true
 TARGET_BOARD_SUFFIX := _64
-TARGET_OTA_ASSERT_DEVICE := TAB-A05-BD,a05bd,lineage_a05bd
+TARGET_OTA_ASSERT_DEVICE := TAB-A05-BD
 BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
@@ -23,6 +23,8 @@ AB_OTA_UPDATER := false
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/recovery/root/vendor/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/manifest.xml
 
 # Architecture
 TARGET_ARCH := arm64
@@ -49,23 +51,14 @@ TARGET_BOOTLOADER_BOARD_NAME := a05bd
 TARGET_NO_BOOTLOADER := true
 
 # Display
-DEVICE_RESOLUTION := 1920x1200
 TARGET_SCREEN_DENSITY := 213
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1200
+TARGET_SCREEN_HEIGHT := 1200
+TARGET_SCREEN_WIDTH := 1920
 
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_CMDLINE += "androidboot.selinux=permissive"
-BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.avb_version=1.1"
-BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.device_state=unlocked"
-BOARD_KERNEL_CMDLINE += "androidboot.vbmeta.invalidate_on_error=no"
-BOARD_KERNEL_CMDLINE += "androidboot.veritymode=ignore_corruption"
-BOARD_KERNEL_CMDLINE += "bootopt=64S3,32N2,64N2"
-BOARD_KERNEL_CMDLINE += "androidboot.atm=disabled"
-BOARD_KERNEL_CMDLINE += "androidboot.meta_log_disable=0"
-BOARD_KERNEL_CMDLINE += "androidboot.dtbo_idx=0"
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x14f88000
 BOARD_KERNEL_TAGS_OFFSET := 0x13f88000
@@ -80,8 +73,7 @@ TARGET_KERNEL_CONFIG := a05bd_defconfig
 TARGET_KERNEL_SOURCE := kernel/sts/a05bd
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/recovery/root/vendor/compatibility_matrix.xml
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/manifest.xml
+
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -127,8 +119,7 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_INCLUDE_CRYPTO := true
 
 # TWRP Configuration
-TW_THEME := landscape_hdpi
-TW_ROTATION := 270
+TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := false
 TW_DEFAULT_LANGUAGE := ja
 TW_SCREEN_BLANK_ON_BOOT := true
@@ -150,6 +141,5 @@ TW_INCLUDE_INJECTTWRP := false
 TW_NO_HAPTICS := true
 TWRP_INCLUDE_LOGCAT := false
 TW_DEVICE_VERSION := $(shell date -u +" %F")
-RECOVERY_TOUCHSCREEN_SWAP_Y := true
-RECOVERY_TOUCHSCREEN_FLIP_XY := true
-
+RECOVERY_TOUCHSCREEN_SWAP_XY := true
+RECOVERY_TOUCHSCREEN_FLIP_Y := true

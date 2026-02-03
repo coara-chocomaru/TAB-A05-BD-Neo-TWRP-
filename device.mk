@@ -6,18 +6,11 @@
 #
 
 LOCAL_PATH := device/sts/a05bd
-PRODUCT_CHARACTERISTICS := tablet
-
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery \
-    android.hardware.health@2.1-service
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.build.product=TAB-A05-BD \
     ro.product.board=TAB-A05-BD \
     ro.product.device=TAB-A05-BD \
-    ro.product.name=TAB-A05-BD \
     ro.product.locale=ja-JP \
     ro.build.system_root_image=true \
     persist.sys.locale=ja-JP \
